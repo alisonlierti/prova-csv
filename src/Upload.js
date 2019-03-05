@@ -28,12 +28,28 @@ export default class Upload extends React.Component {
   };
 
   render() {
+    const textStyle = {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    };
+
     return (
       <div>
         <Dropzone onDrop={this.onDrop}>
           {({ getRootProps, getInputProps, isDragActive }) => {
             return (
               <div
+                style={{
+                  width: '98vw',
+                  height: '98vh',
+                  borderWidth: 2,
+                  borderColor: '#666',
+                  borderStyle: 'dashed',
+                  borderRadius: 5,
+                  marginLeft: '1vw',
+                  marginTop: '1vh'
+                }}
                 {...getRootProps()}
                 className={
                   ('dropzone',
@@ -43,11 +59,12 @@ export default class Upload extends React.Component {
                 }>
                 <input {...getInputProps()} />
                 {isDragActive ? (
-                  <p>Arraste os arquivos aqui...</p>
+                  <div style={textStyle}>Arraste os arquivos aqui...</div>
                 ) : (
-                  <p>
-                    Arraste seu arquivo csv aqui para fazer o upload do mesmo.
-                  </p>
+                  <div style={textStyle}>
+                    Arraste seu arquivo csv aqui, ou clique em qualquer ponto da
+                    tela para fazer o upload do mesmo.
+                  </div>
                 )}
               </div>
             );
